@@ -550,7 +550,7 @@ while (loop) {
         }
         //======================================List Of Result ====================================================
     }
-    else if (choices.select === "3: => List Of Result") {
+    else if (choices.select === "4: => List Of Result ") {
         console.log(chalk.bold.cyanBright("\n>>>>>>>>>>>>>>>>> Candidates Result >>>>>>>>>>>>>>>>>>>>>>>>>>>>"));
         for (let i = 0; i < storeData.length; i++) {
             console.log((chalk.bold.greenBright("\nName: ")) + (chalk.bold.yellowBright(storeData[i].name)) + (chalk.bold.greenBright(" Scores: ")) + (chalk.bold.yellowBright(pushScore[i])));
