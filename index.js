@@ -2,11 +2,10 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bold.blueBright("\n\t\t\t\t<<<<<<<<<<<<<<<<<  ZAKIA-QUIZ-APP <<<<<<<<<<<<<<<<<<<<"));
-console.log(chalk.bold.cyanBright("\n\t\t\t\t<<<<<<<<<<<<<<<<< REGISTRATION <<<<<<<<<<<<<<<<<<<<"));
 let loop = true;
 let storeData = []; //Student all data stored
 let score = 0;
-let selectRollNo = 4001;
+let selectRollNo = 4001; //strat assigning rollnumbers from 4001
 let storeResult;
 let pushScore = []; //Number of result store in this array
 while (loop) {
@@ -16,7 +15,7 @@ while (loop) {
             type: "list",
             name: "select",
             message: "Select one",
-            choices: ["1: => Registration", "2: => Admit Card", "3: => Search Result", "4: => List Of Result", "5: => Exit"]
+            choices: ["1: => start quiz", "2: => Admit Card", "3: => Search Result", "4: => List Of Result", "5: => Exit"]
         }
     ]);
     class Result {
@@ -29,7 +28,7 @@ while (loop) {
         rollNo;
         constructor(name, email, password, course, timing, totalScore) {
             this.name = name;
-            this.email = email;
+            this.email = 'example@gmail.com';
             this.password = password;
             this.course = course;
             this.timing = timing;
@@ -38,7 +37,9 @@ while (loop) {
         }
     }
     //=============================================== Registration =====================================================
-    if (choices.select === "1: => Registration") {
+    if (choices.select === "1: => start quiz") {
+        console.log(chalk.bold.cyanBright("\n\t\t\t\t<<<<<<<<<<<<<<<<< REGISTRATION <<<<<<<<<<<<<<<<<<<<"));
+        console.log(chalk.bold.yellow(`\n\t\t\t\t please first register , then start quiz`));
         const enter = await inquirer.prompt([
             {
                 type: "input",
@@ -246,7 +247,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 1"));
@@ -260,7 +261,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 2"));
@@ -274,7 +275,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 3"));
@@ -302,7 +303,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 5"));
@@ -317,7 +318,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 6"));
@@ -331,7 +332,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 7"));
@@ -345,7 +346,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score++;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 8"));
@@ -494,7 +495,7 @@ while (loop) {
             console.log(chalk.red.bold(`\t===========================`));
             console.log(chalk.green.bold.italic("\t     CORRECT ANSWER"));
             console.log(chalk.red.bold(`\t===========================\n`));
-            score = score + 1;
+            score++;
         }
         else {
             console.log(chalk.blue.bold.italic("\n\t\t       MCQS => 8"));
@@ -533,9 +534,27 @@ while (loop) {
                 chalk.green.bold.italic(`\n\t    BUT CORRECT ANSWER IS: "All of the above"`));
             console.log(chalk.yellow.bold(`\t===========================================`));
         }
-        console.log(chalk.bold.magentaBright("\n==================================Quiz Complete================================\n"));
         storeResult = score; //score ko baki jaga access karnay ka liya (storeResult) ka variable banaya ha jisay pehlay bahar declare kiya ha or ander reassign kiya ha.
         pushScore.push(storeResult); //phir is (storeResult) ma jo score hoga usay bahar walay array jis ka name (pushScore) ha us ma push kardangay or phir (pushScore) ko hum kahe bhe use kar saktay han 
+        // ======= switch case =========
+        switch (true) {
+            case storeResult >= 18 && storeResult <= 20:
+                console.log(chalk.bold.green(`\t >>> your obtain marks is ${storeResult} out of 20,<<< \n\t\t >> congragulation: 'your grade is A'<<`));
+                break;
+            case storeResult >= 14 && storeResult <= 18:
+                console.log(chalk.bold.green(`\t >>> your obtain marks is ${storeResult} out of 20 <<< \n\t\t >> "your grade is B"<<`));
+                break;
+            case storeResult >= 11 && storeResult < 14:
+                console.log(chalk.bold.green(`\t >>> your obtain marks is ${storeResult} out of 20 <<< \n\t\t >> 'your grade is C'<<`));
+                break;
+            case storeResult >= 7 && storeResult <= 11:
+                console.log(chalk.bold.green(`\t >>> your obtain marks is ${storeResult} out of 20 <<< \n\t\t>> 'your grade is D'<<`));
+                break;
+            default:
+                console.log(chalk.bold.green(`\t >>> your obtain marks is ${storeResult} out of 20 <<< \n\t\t >> "your grade is F"<<`));
+        }
+        console.log(chalk.yellow.bold(`\t===========================================`));
+        console.log(chalk.bold.magentaBright("\n==================================Quiz Complete================================\n"));
         //=========================================== Admit Card =====================================
     }
     else if (choices.select === "2: => Admit Card") {
@@ -576,13 +595,13 @@ while (loop) {
                 console.log((chalk.bold.greenBright("Course: ")) + (chalk.bold.yellowBright(student.course)));
                 console.log((chalk.bold.greenBright("Timing: ")) + (chalk.bold.yellowBright(student.timing)));
                 // Print the result for this student
-                if (pushScore[storeData.indexOf(student)] < 5) {
+                if (pushScore[storeData.indexOf(student)] < 7) {
                     console.log(chalk.bold.redBright("\n>>>>>>>>>>>>>>>>>>>> 😞 Sorry, You are Fail.Better Luck Next Time ⏳. >>>>>>>>>>>>>>>>>>>>>>>>>"));
-                    console.log(chalk.bold.redBright(`                            Your Total Score is ${pushScore[storeData.indexOf(student)]}/10`));
+                    console.log(chalk.bold.redBright(`                            Your Total Score is ${pushScore[storeData.indexOf(student)]}/20`));
                 }
                 else {
                     console.log(chalk.bold.greenBright("\n>>>>>>>>>>>>>>>>>>>>  🎉🎊 Congratulations You are Passed 💫✨ >>>>>>>>>>>>>>>>>>>>>>>>>"));
-                    console.log(chalk.bold.greenBright(`                            Your Total Score is ${pushScore[storeData.indexOf(student)]}/10`));
+                    console.log(chalk.bold.greenBright(`                            Your Total Score is ${pushScore[storeData.indexOf(student)]}/20`));
                 }
                 break; // Exit loop once student is found
             }
